@@ -1,3 +1,9 @@
+###
+### LINE毎日英会話->zuknowインポート用テキスト変換
+### Authors::   shokokb
+### 実行コマンド ruby convert.rb （対象のファイルパス）
+### テスト環境：ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin13]
+###
 SCRIPT_FILENAME = 'convert.rb'
 if ARGV.length == 1 then
   _filepath_original = ARGV[0]
