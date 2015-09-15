@@ -1,10 +1,14 @@
 ###
 ### LINE毎日英会話->zuknowインポート用テキスト変換
+### LINEエクスポート(TXT)をzuknow用の書式に変換する。
 ### Authors::   shokokb
 ### 実行コマンド ruby convert.rb （対象のファイルパス）
 ### テスト環境：ruby 2.2.0p0 (2014-12-25 revision 49005) [x86_64-darwin13]
 ###
+
 SCRIPT_FILENAME = 'convert.rb'
+DEBUG_MODE = false
+
 if ARGV.length == 1 then
   _filepath_original = ARGV[0]
   # _filepath_export = ARGV[0]
@@ -33,8 +37,10 @@ if ARGV.length == 1 then
 
         if parts[2] != nil and not question.match("今週の復習") then
           answer = parts[2].gsub(/^.*解答例はこちらっ↓|次に流れる音声で(、*)発音もチェック！.*$/, "")
-          p  "質問 " + question
-          p "回答 " + answer
+          if DEBUG_MODE then
+            p "質問 " + question
+            p "回答 " + answer
+          end
           File.open(_filepath_export,"a") { |file| file.puts question + "\t" + answer }
         end
         item = line
